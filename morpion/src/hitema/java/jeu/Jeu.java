@@ -8,10 +8,10 @@ public class Jeu {
     private Joueur joueur1;
     private Joueur joueur2;
 
-    public Jeu() {
-        plateau = new Plateau();
-        joueur1 = new Joueur('X');
-        joueur2 = new Joueur('O');
+    public Jeu(int taille) {
+        plateau = new Plateau(taille);
+        joueur1 = new Joueur('X', taille);
+        joueur2 = new Joueur('O', taille);
     }
 
         public void lancer() {
@@ -37,6 +37,16 @@ public class Jeu {
             }
         }
         plateau.afficher();
+    }
+    public static int demanderTaille() {
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        System.out.print("Entrez la taille du plateau (3-9) : ");
+        int taille = scanner.nextInt();
+        while (taille < 3 || taille > 9) {
+            System.out.print("Taille invalide. Entrez une taille entre 3 et 9 : ");
+            taille = scanner.nextInt();
+        }
+        return taille;
     }
 }
 
