@@ -24,11 +24,18 @@ public class Plateau {
     }
 
     public boolean placer(int x, int y, char symbole) {
+        if (grille[x][y] == '-') {
+            grille[x][y] = symbole;
+            return true;
+        } else {
+            System.out.println("La position est déjà occupée. Veuillez choisir une autre position.");
         if (x < 0 || x >= 3 || y < 0 || y >= 3 || grille[x][y] != '-') {
             return false;
         }
+
         grille[x][y] = symbole;
         return true;
+    }
     }
 
     public boolean verifierVictoire(char symbole) {
